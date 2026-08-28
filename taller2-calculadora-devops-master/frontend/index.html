@@ -1,0 +1,49 @@
+<!-- Ejecutar con node server.js dentro de la carpeta frontend y abrir http://localhost:8000 -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Calculadora Básica</title>
+  </head>
+  <body>
+    <h1>Calculadora Básica</h1>
+
+    <div class="operation-container">
+      <div class="input-container">
+        <input type="text" id="num1" placeholder="Número 1" />
+        <input type="text" id="num2" placeholder="Número 2" />
+      </div>
+      <div id="options">
+        <select id="operation" class="operation-select">
+          <option value="select" class="operation-option">
+            Seleccione la operación
+          </option>
+          <option value="add" class="operation-option">Sumar</option>
+          <option value="subtract" class="operation-option">Restar</option>
+          <option value="multiply" class="operation-option">Multiplicar</option>
+          <option value="divide" class="operation-option">Dividir</option>
+        </select>
+        <button class="submit-btn" onclick="calculate()">Calcular</button>
+      </div>
+    </div>
+    <div id="info"></div>
+    <div id="result"></div>
+    <div id="history">
+      <button class="load-btn" onclick="loadHistory()">
+        Cargar últimas 5 operaciones
+      </button>
+      <h2>Últimas 5 operaciones</h2>
+      <ul id="operationsList"></ul>
+    </div>
+    <div id="health">
+      <button class="load-btn" onclick="loadStatus()">
+        Ver estado del sistema
+      </button>
+      <div id="statusInfo"></div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>

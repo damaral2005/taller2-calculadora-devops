@@ -1,0 +1,88 @@
+INSTRUCCIONES DE DESPLIEGUE MANUAL
+==================================
+
+Requisitos
+----------
+- Node.js 18 o superior (verificar con: node -v)
+- Navegador web
+
+
+1. Backend
+----------
+1.1. Abrir una terminal en la carpeta del backend:
+
+     cd backend
+
+1.2. Instalar las dependencias (solo la primera vez):
+
+     npm install
+
+1.3. Iniciar el servidor:
+
+     node server.js
+
+1.4. Debe aparecer el mensaje:
+
+     Servidor corriendo en http://localhost:5000
+
+     Dejar esta terminal abierta mientras se usa la aplicacion.
+
+
+2. Frontend
+-----------
+2.1. Abrir una terminal en la carpeta del frontend:
+
+     cd frontend
+
+2.2. Instalar las dependencias (solo la primera vez):
+
+     npm install
+
+2.3. Iniciar el servidor:
+
+     node server.js
+
+2.4. Debe aparecer el mensaje:
+
+     Frontend corriendo en http://localhost:8080
+
+     Abrir esa direccion en el navegador.
+
+     Nota: el boton "Ver estado del sistema" usa el endpoint /status,
+     que solo funciona si el frontend se sirve con node server.js
+     (no funciona abriendo index.html con doble clic).
+
+
+3. Verificacion
+---------------
+- Ingresar dos numeros, seleccionar una operacion y presionar el boton.
+  Debe mostrarse el resultado.
+- El historial debe mostrar las ultimas 5 operaciones.
+- Las operaciones se guardan en backend/operations.json
+
+
+4. Detener la aplicacion
+------------------------
+- En la terminal del backend presionar Ctrl + C.
+
+
+5. Problemas comunes
+--------------------
+- "Error al realizar la operacion": el backend no esta corriendo.
+  Repetir el paso 1.3.
+- Puerto 5000 ocupado: cambiar el valor de PORT en backend/server.js
+  y la variable serverUrl en frontend/script.js (debe ser el mismo puerto).
+- Si se despliega el backend en otra maquina o dominio, actualizar
+  serverUrl en frontend/script.js con esa direccion.
+
+
+6. Despliegue automatizado (Fase 2)
+------------------------------------
+Ver scripts/ para el despliegue automatizado con firewall (ufw):
+
+     ./scripts/deploy.sh backend
+     ./scripts/deploy.sh frontend
+
+O con Docker:
+
+     docker compose up -d --build
