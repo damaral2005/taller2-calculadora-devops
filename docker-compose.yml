@@ -1,16 +1,55 @@
 services:
+
   backend:
-    build: ./backend
+    build:
+      context: ./backend
+
     image: taller2-calculadora-backend:latest
+
+    container_name: calc-backend
+
+    environment:
+      PORT: 5000
+      HISTORY_FILE: /data/operations.json
+
     ports:
       - "5000:5000"
+
     volumes:
-      - ./backend/operations.json:/app/operations.json
+      - calc-history:/data
+
+    networks:
+      - calc-network
+
 
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+
     image: taller2-calculadora-frontend:latest
+
+    container_name: calc-frontend
+
+    environment:
+      PORT: 8080
+      BACKEND_URL: http://backend:5000
+
     ports:
       - "8080:8080"
+
     depends_on:
       - backend
+
+    networks:
+      - calc-network
+
+
+volumes:
+
+  calc-history:
+
+
+networks:
+
+  calc-network:
+    driver: bridge

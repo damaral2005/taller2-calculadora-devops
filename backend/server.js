@@ -11,7 +11,14 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-const filePath = path.join(__dirname, "operations.json");
+const filePath =
+  process.env.HISTORY_FILE || path.join(__dirname, "operations.json");
+
+fs.mkdirSync(path.dirname(filePath), { recursive: true });
+
+if (!fs.existsSync(filePath)) {
+  fs.writeFileSync(filePath, "[]");
+}
 
 function readOperations() {
   if (!fs.existsSync(filePath)) {

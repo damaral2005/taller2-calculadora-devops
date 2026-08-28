@@ -1,5 +1,5 @@
 async function calculate() {
-  const serverUrl = "http://localhost:5000";
+  const serverUrl = "/api";
 
   const num1 = parseFloat(document.getElementById("num1").value);
   const num2 = parseFloat(document.getElementById("num2").value);
@@ -64,7 +64,7 @@ function formatStatus(label, data) {
 }
 
 async function loadStatus() {
-  const backendUrl = "http://localhost:5000";
+  const backendUrl = "/api";
   const statusInfo = document.getElementById("statusInfo");
   const lines = [];
 
@@ -92,7 +92,7 @@ async function loadStatus() {
 }
 
 async function loadHistory() {
-  const serverUrl = "http://localhost:5000";
+  const serverUrl = "/api";
 
   try {
     const response = await fetch(`${serverUrl}/operations`);
