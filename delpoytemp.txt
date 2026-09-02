@@ -1,0 +1,20 @@
+#!/bin/bash
+# Salir inmediatamente si un comando falla
+set -e 
+
+# Variables (Ajusta estos valores a los de tu red/equipo)
+DEST_USER="usuario"
+DEST_IP="ip_destino"
+DEST_DIR="/home/usuario/app-despliegue"
+
+echo "1. Preparando directorio en la máquina destino..."
+ssh $DEST_USER@$DEST_IP "mkdir -p $DEST_DIR"
+
+echo "2. Transfiriendo docker-compose.yml al destino..."
+# Si tienes más carpetas (como código fuente), añádelas a este comando
+scp docker-compose.yml $DEST_USER@$DEST_IP:$DEST_DIR/
+
+echo "3. Ejecutando los contenedores de forma remota..."
+ssh $DEST_USER@$DEST_IP "cd $DEST_DIR && docker compose up -d"
+
+echo "Despliegue finalizado con éxito."
