@@ -1,0 +1,11 @@
+deploy:
+  needs: build-and-test # Ajusta al nombre de tu job de pruebas
+  runs-on: [self-hosted, equipo-A] # Debe coincidir con la etiqueta del Step 2
+  steps:
+    # Descarga el código del repositorio a la máquina Ops
+    - name: Descargar código fuente
+      uses: actions/checkout@v4
+
+    # Ejecuta el script de despliegue
+    - name: Desplegar en máquina destino
+      run: ./deploy.sh
