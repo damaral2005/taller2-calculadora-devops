@@ -51,3 +51,13 @@ docker compose up -d --build
 
 Pendiente de completar tras correr la simulación cronometrada (Fase 1 vs
 Fase 2): Lead Time, Deployment Frequency, Change Failure Rate, MTTR.
+
+
+
+
+
+
+drwx------  2 swarch swarch 4096 Sep  2 12:19 .
+drwxr-x--- 16 swarch swarch 4096 Sep  2 12:19 ..
+-rw-r--r--  1 swarch swarch  284 Sep  2 12:25 known_hosts
+
