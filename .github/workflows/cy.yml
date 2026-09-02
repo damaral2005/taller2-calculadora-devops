@@ -55,3 +55,19 @@ jobs:
       - name: Apagar contenedores
         if: always()
         run: docker compose down
+
+
+  deploy:
+    name: Deploy to Target Machine
+    needs: test
+    runs-on: [self-hosted, equipo-A] # Ajusta "equipo-A" a la etiqueta de tu runner
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Permisos de ejecución para el script
+        run: chmod +x ./deploy.sh
+
+      - name: Desplegar aplicación
+        run: ./deploy.sh
