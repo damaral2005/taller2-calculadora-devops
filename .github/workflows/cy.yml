@@ -60,7 +60,7 @@ jobs:
   deploy:
     name: Deploy to Target Machine
     needs: test
-    runs-on: [self-hosted, equipo-A] # Ajusta "equipo-A" a la etiqueta de tu runner
+    runs-on: [self-hosted, 206m12_taller2devops] # Ajusta "equipo-A" a la etiqueta de tu runner
 
     steps:
       - name: Descargar repositorio
